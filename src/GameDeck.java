@@ -1,34 +1,34 @@
 import java.util.Random;
-public class GameDeck {
-    public String [] deck = new String[40];
-    public String[] sets = {"Red","Blue","Green","Yellow"};
-    public String[] CardNumbers = {"1","2","3","4","5","6","7","8","9","10"};
-    public void CreateTheDeck(){
-        for(int i=0;i<10;i++){
-            deck[i]=sets[1] + CardNumbers[i];
-        }
-        for(int i=10;i<20;i++){
-            deck[i]=sets[2] + CardNumbers[i-10];
-        }
-        for(int i=20;i<30;i++){
-            deck[i]=sets[3] + CardNumbers[i-20];
-        }
-        for(int i=30;i<40;i++){
-            deck[i]=sets[4] + CardNumbers[i-30];
+public class GameDeck{
+    public static int nowRank = 10;
+    public static int nowColour=4;
+    public static int CardNumbers = nowColour*nowRank;
+    int p = 0;
+    Card[] deck = new Card[CardNumbers];
+
+public GameDeck(){
+
+    while(p<52){
+        for(int i = 1; i<=nowRank;i++){
+            for(int g = 1; g<=nowColour;g++){
+                deck[p] = new Card(i,g);
+                p++;
+            }
         }
     }
-    public void ShuffleTheDeck(){
-        Random random = new Random();
-        for(int i=0;i<deck.length;i++){
-            int arrayIndexToSwipe = random.nextInt(deck.length);
-            int temp = arrayIndexToSwipe;
-            arrayIndexToSwipe = deck[i];
-
-
-
+}
+public class ShuffleTheDeck{
+    Random rnd = new Random();
+    public void Shuffle(){
+        for (int i =deck.length;i>=0;i--){
+            int randomIndex = rnd.nextInt(deck.length);
+            Card temporary =deck[i];
+            deck[i]=deck[randomIndex];
+            deck[randomIndex]= temporary;
         }
+
 
     }
 
-
+}
 }
