@@ -1,21 +1,20 @@
 public class Card {
-     public int nowRank;
-     public int maxRank = 10;
-     public int nowColour;
-     public int maxColour = 4;
+     private String nowRank;
+     private static int maxRank = 10;
+     private String nowColour;
+     private static int maxColour = 4;
 
 
-
-    public void setNowRank(int h){
+    public void setNowRank(String h){
          this.nowRank = h;
      }
-     public int getNowRank (){
+     public String getNowRank (){
          return nowRank;
      }
-     public void setNowColour(int h){
+     public void setNowColour(String h){
          this.nowColour = h;
      }
-     public int getNowColour(){
+     public String getNowColour(){
          return nowColour;
      }
     public void setMaxRank(int h) {
@@ -33,34 +32,38 @@ public class Card {
 
 
 
-     public String[] ranks = new String [maxRank];
+     public static String[] ranks = new String [maxRank];
     {
-        ranks[0]="one";
-        ranks[1]="two";
-        ranks[2]="three";
-        ranks[3]="four";
-        ranks[4]="five";
-        ranks[5]="six";
-        ranks[6]="seven";
-        ranks[7]="eight";
-        ranks[8]="nine";
-        ranks[9]="ten";
+        ranks[0]="1";
+        ranks[1]="2";
+        ranks[2]="3";
+        ranks[3]="4";
+        ranks[4]="5";
+        ranks[5]="6";
+        ranks[6]="7";
+        ranks[7]="8";
+        ranks[8]="9";
+        ranks[9]="10";
     }
-    public String[] colours = new String [maxColour];
+    public static String[] colours = new String [maxColour];
     {
         colours[0]="Red";
-        colours[1]="Red";
-        colours[2]="Red";
-        colours[3]="Red";
-    }
-    public String rank = ranks[nowRank];
-    public String colour = colours[nowColour];
-
-    public Card(int x,int y){
-        this.nowRank = x;
-        this.nowColour = y;
+        colours[1]="Blue";
+        colours[2]="Yellow";
+        colours[3]="Green";
     }
 
+    public Card(){
 
     }
+
+    public Card(int a ,int b){
+        this.nowRank = ranks[a];
+        this.nowColour = colours[b];
+    }
+    public Card(String rank ,String color){
+        this.nowRank = rank;
+        this.nowColour = color;
+    }
+}
 
