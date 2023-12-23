@@ -4,27 +4,24 @@ public class Player {
     private int score;
     private Deck handCards;
     private Deck boardCards;
-    private Deck playerHand;
-    private Deck computerHand;
-    private Deck computerBoard;
-    private Deck playerBoard;
+    private Deck playerDeck;
     public String getName(){return  name;}
     public Deck getHandCards(){return handCards;}
     public Deck getBoardCards(){return boardCards;}
     public int getScore(){return score;}
-    public Deck getPlayerHand(){return playerHand;}
-    public Deck getComputerHand(){return computerHand;}
-    public Deck getPlayerBoard(){return playerBoard;}
-    public Deck getComputerBoard(){return computerBoard;}
+    public Deck getPlayerDeck(){return playerDeck;}
 
     public Player(){
 
     }
 
+
     public Player(String newName){
         name = newName;
         handCards = new Deck(4);
         boardCards = new Deck(10);
+        playerDeck = new Deck(10);
+
     }
 
     public void play(){

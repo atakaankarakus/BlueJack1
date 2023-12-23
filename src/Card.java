@@ -61,9 +61,9 @@ public class Card {
         this.nowRank = ranks[a];
         this.nowColour = colours[b];
     }
-    public Card(String rank ,String color){
+    public Card(String rank ,String colour){
         this.nowRank = rank;
-        this.nowColour = color;
+        this.nowColour = colour;
     }
 }
 
