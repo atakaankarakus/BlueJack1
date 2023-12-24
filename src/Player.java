@@ -11,9 +11,6 @@ public class Player {
     public int getScore(){return score;}
     public Deck getPlayerDeck(){return playerDeck;}
 
-    public Player(){
-
-    }
 
 
     public Player(String newName){

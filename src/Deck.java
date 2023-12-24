@@ -4,7 +4,6 @@ public class Deck {
     Card[] arr;
     Card[] deck = new Card[40];
     int lastCardIndex = -1;
-    Card Card=new Card();
 
     public Deck(int size){
         arr = new Card[size];
@@ -15,7 +14,7 @@ public class Deck {
         while (p < 40) {
             for (int i = 0; i < 10; i++) {
                 for (int g = 0; g < 4; g++) {
-                    deck[p] = new Card(i, g,"+");
+                    deck[p] = new Card(i, g);
                     p++;
                 }
             }
@@ -29,7 +28,8 @@ public class Deck {
     }
     public void printDeck(){
         for (int i = 0; i < 40; i++){
-            System.out.print(deck[i].getNowRank()+ deck[i].getNowColour().charAt(0)+" ");
+            if(deck[i] == null) continue;
+            System.out.print(deck[i].getNowRank()+ String.valueOf(deck[i].getNowColour().charAt(0)) +" ");
         }
     }
 
@@ -41,6 +41,17 @@ public class Deck {
             Card temporary = deck[i];
             deck[i] = deck[randomIndex];
             deck[randomIndex] = temporary;
+        }
+    }
+    public void shuffleTheCards()
+    {
+        Random rnd = new Random();
+        for (int i = 0; i < 100; i++) {
+            int randomIndex = rnd.nextInt(arr.length);
+            int randomIndex2 = rnd.nextInt(arr.length);
+            Card temporary = arr[randomIndex];
+            arr[randomIndex] = arr[randomIndex2];
+            arr[randomIndex2] = temporary;
         }
     }
     public void firstFiveCards(Player player){
@@ -59,22 +70,42 @@ public class Deck {
         Random rnd = new Random();
         Card[] threeCardsArr = new Card[3];
         for (int i = 0; i < 3; i++) {
-            int rank = rnd.nextInt(10) + 1;
-            String sign = rnd.nextBoolean() ? "+" : "-";
+            int rank = rnd.nextInt(6) + 1;
+
+            if (rnd.nextBoolean()){
+                rank *= -1;
+            }
+
             String color = Card.colours[rnd.nextInt(4)];
-            threeCardsArr[i] = new Card(rank, color,sign);
+            threeCardsArr[i] = new Card(rank, color);
             player.getPlayerDeck().addCard(threeCardsArr[i]);
         }
     }
 
     public void lastTwoCards(Player player) {
         Random rnd = new Random();
-    }
-    public void pickFourCards(Player player) {
-        Deck tempArray = player.getPlayerDeck();
-        for (int i = 0; i < 4; i++) {
-            //player.getHandCards().addCard(tempArray[i]);
-            //player.getPlayerDeck().removeCard();
+        for (int i = 0; i < 2; i++){
+            int chance = rnd.nextInt(5);
+
+            if(chance == 0){
+                if(rnd.nextBoolean()){
+                    Card temp = new Card(0, "+/-");
+                    player.getPlayerDeck().addCard(temp);
+                }else{
+                    Card temp = new Card(0, "2x");
+                    player.getPlayerDeck().addCard(temp);
+                }
+            }else{
+                int rank = rnd.nextInt(6) + 1;
+
+                if (rnd.nextBoolean()){
+                    rank *= -1;
+                }
+
+                String color = Card.colours[rnd.nextInt(4)];
+                Card temp = new Card(rank, color);
+                player.getPlayerDeck().addCard(temp);
+            }
         }
     }
     public void askCard(Player player) {
@@ -84,7 +115,11 @@ public class Deck {
 
     public void printCards(){
         for (int i = 0; i <= lastCardIndex; i++) {
-            System.out.print(arr[i].getNowRank() + arr[i].getNowColour().charAt(0) + " ");
+            if(arr[i].getNowRank() == 0){
+                System.out.print(arr[i].getNowColour() + " ");
+            }else{
+                System.out.print(arr[i].getNowRank() + String.valueOf(arr[i].getNowColour().charAt(0)) + " ");
+            }
         }
     }
 

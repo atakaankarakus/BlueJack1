@@ -60,15 +60,13 @@ public class Card {
 
     }
 
-    public Card(int a ,int b,String sign){
+    public Card(int a ,int b){
         this.nowRank = ranks[a];
         this.nowColour = colours[b];
-        this.sign = sign;
     }
-    public Card(int rank ,String colour,String sign){
+    public Card(int rank ,String colour){
         this.nowRank = rank;
         this.nowColour = colour;
-        this.sign = sign;
     }
 }
 

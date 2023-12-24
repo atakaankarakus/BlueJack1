@@ -4,42 +4,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Random rnd = new Random();
-
-
-        Player user = new Player("Kaan");
-        Player computer = new Player("Computer");
         Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter your name!");
+        String name = sc.nextLine().trim();
+
+
+        Player user = new Player(name);
+        Player computer = new Player("Computer");
 
         Deck deck = new Deck();
         deck.GameDeck();
-        //deck.printDeck();
         deck.shuffleTheDeck();
-        //deck.printDeck();
+
         deck.firstFiveCards(user);
         deck.lastFiveCards(computer);
         deck.threeCards(user);
         deck.threeCards(computer);
-        user.getPlayerDeck().printCards();
+        deck.lastTwoCards(user);
+        deck.lastTwoCards(computer);
+        System.out.println();
 
-
-
-
-
-        System.out.println("Would you like to (1)End (2)Stand or (3)Play a Card ?");
-        int response = sc.nextInt();
-
-        if(response ==1){
-            deck.askCard(computer);
-        } else if (response ==2){
-
-        } else {
-            System.out.println("Which Card do you want to play?");
-            int playResponse = sc.nextInt();
-            user.getBoardCards().addCard(user.getHandCards().removeCard()); //Doğru mu ?
+        for (int i = 0; i < 4; i++){
+            user.getHandCards().addCard(user.getPlayerDeck().removeCard());
+            computer.getHandCards().addCard(computer.getPlayerDeck().removeCard());
         }
 
+        System.out.println("Would you like to (1)End (2)Stand or (3)Play a Card ?");
 
-
-
-    }
-}
+}}

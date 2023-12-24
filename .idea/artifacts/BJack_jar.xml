@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BJack:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BJack_jar</output-path>
+    <root id="archive" name="BJack.jar">
+      <element id="module-output" name="BJack" />
+    </root>
+  </artifact>
+</component>
