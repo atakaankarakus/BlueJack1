@@ -12,19 +12,17 @@ public class Main {
 
         Deck deck = new Deck();
         deck.GameDeck();
-        deck.printDeck();
+        //deck.printDeck();
         deck.shuffleTheDeck();
-        System.out.println();
-        deck.printDeck();
+        //deck.printDeck();
         deck.firstFiveCards(user);
-
         deck.lastFiveCards(computer);
-        System.out.println(" ");
-        System.out.print("User's Hand ");
+        deck.threeCards(user);
+        deck.threeCards(computer);
         user.getPlayerDeck().printCards();
-        System.out.println(" ");
-        System.out.print("Computer's Hand ");
-        computer.getPlayerDeck().printCards();
+
+
+
 
 
         System.out.println("Would you like to (1)End (2)Stand or (3)Play a Card ?");
